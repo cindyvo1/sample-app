@@ -1,17 +1,11 @@
 #!/bin/bash
-# Simpele build/test stap voor sample-app (zonder Docker)
+# CI build stap via Docker Python image
 
 set -e
 
-echo "== Jenkins build stap: controleer Python-bestand =="
+echo "== CI: Cloning & build/test sample-app =="
 
-# 1. Syntax-check van de Flask app
-python3 -m py_compile sample_app.py
+# Test Python syntax inside Docker
+docker run --rm -v $(pwd):/app -w /app python:3.9 python3 -m py_compile sample_app.py
 
-echo "Python syntax OK"
-
-# 2. (optioneel) alle bestanden tonen
-echo "Projectinhoud:"
-ls -R
-
-echo "Build stap afgerond."
+echo "Build/test OK"
