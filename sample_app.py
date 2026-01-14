@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-# Add to this file for the sample app lab
+# Simple Flask sample app for CI lab
 
-from flask import Flask, request, render_template
+from flask import Flask, render_template
 
 sample = Flask(__name__)
 
